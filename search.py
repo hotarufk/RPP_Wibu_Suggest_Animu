@@ -14,44 +14,55 @@ import operator
 
 
 
-def preprocess(extensionsToCheck,maxScore,minScore):
-	f = open('full.txt', 'r')
-	peoples =[]
-	scount=0
+def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
+	#Kamus Kecil
+	keywords = []
 	ListGenre = ['action','romance','fantasy']
-	ListPeople=['Kana Hanazawa']
-	Result[]
+	if LGenre != None:
+		ListGenre = LGenre
+	ListKeywords=['Kana Hanazawa']
+	if LKeywords != None :
+		ListKeywords = LKeywords
+	Result=[]
+	
+	#Algoritma
+	f = open('full.txt', 'r')
 	for x in range(0, 10):
 		dataAnimu = f.readline() 
 		S = dataAnimu.split("]")
 		Genre  = S[1].replace("[","").replace("'","").split(", ") #genre yang ada
-		#print Genre
+		#Genre
 		for g in ListGenre :
 			if any(g in gen for gen in Genre):
 				#print "found !", Genre
 				if dataAnimu in Result: #data udah ada di list
+					print "sudah ada"
 				else :
 					Result.append(dataAnimu)
-				
+					print "found"
 				break
-		for y in range(0,6) :
-			peoples.extend (S[y].replace("[","").replace("'","").split(", "))
-		#print peoples
 		
+		#score
 		
-		
-		#print S
-		#if any(ext in S for ext in extensionsToCheck):
-		#	print "Found ",ext," in : ",S
-		scount+=1
-		#score = S[2].replace("'","").replace("[","").replace("\n","").replace("]","")
-		#newd = S[input_jenis].replace('[','').split(", ")#no 2 itu score
-	return peoples
+		#KeyWords
+		for y in range(0,9) :
+			keywords.extend (S[y].replace("[","").replace("'","").split(", "))
+		for p in ListKeywords:
+			if any(p in pp for pp in keywords):
+				#print "found !", Genre
+				if dataAnimu in Result: #data udah ada di list
+					print "sudah ada"
+				else :
+					Result.append(dataAnimu)
+					print "found"
+				break
+
+	return keywords
 #print VA
 
 f = open('full.txt', 'r')
-Arrf = []
+#Arrf = []
 
-while True :
-	action = raw_input('Command :')
-	preprocess(action)
+#while True :
+	#action = raw_input('Command :')
+preprocess()
