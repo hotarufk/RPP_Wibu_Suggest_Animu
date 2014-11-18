@@ -11,6 +11,9 @@ import operator
 #data [8] itu animation producer
 #data [9] itu VA
 
+
+
+
 def preprocess(extensionsToCheck,maxScore,minScore):
 	f = open('full.txt', 'r')
 	peoples =[]
@@ -26,7 +29,7 @@ def preprocess(extensionsToCheck,maxScore,minScore):
 		for g in ListGenre :
 			if any(g in gen for gen in Genre):
 				#print "found !", Genre
-				if dataAnimu in Result:
+				if dataAnimu in Result: #data udah ada di list
 				else :
 					Result.append(dataAnimu)
 				
