@@ -33,8 +33,21 @@
 {% block content %}
 <div class="container">
   
-  <h2>HELLO WORLD!</h2>
+  <h2>--Anime Recommendation--</h2>
   {{ wtf.quick_form(form, button_map={'submit_button': 'primary'}) }}
+
+  {% if search %}
+
+  <h2>-- Search Result(s) --</h2>
+    {% if result|length != 0 %}
+     {% for result_entity in query %}
+       <!-- Result entity here -->
+     {% endfor %}
+    {% else %}	
+    <h3>Empty result!</h3> 
+    {% endif %}
+
+  {% endif %}
 
 </div>
 
