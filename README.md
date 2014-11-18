@@ -11,15 +11,19 @@ Tugas RPP Semester 1 Tahun 2014 / 2015
 
 ## How to run
 
+You can create your virtual environment by:
+
+    virtualenv venv
+    
+After that, use the following syntax to activate the virtual environment:
+
+    source venv/bin/activate
+
 You can install all required requirements by:
 
     pip install -r requirements.txt
 
-Use the following syntax to activate the virtual environment:
-
-    source venv/bin/activate
-
-Use the following syntax to activate the server:
+Finally, use the following syntax to activate the server:
 
     ./run.py
 
