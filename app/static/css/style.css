@@ -1,0 +1,73 @@
+html,body,.container {
+	height: 90%;
+}
+
+body {
+	background-image:url("/static/img/bg.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+body>.container {
+	height: auto;
+	min-height: 100%;
+}
+
+.container {
+	background-color:#ffffff;
+	border:1px solid black;
+	opacity: 0.9;
+	filter:alpha(opacity=90); /* for IE8 and earlier */
+}
+
+.page-header h1 {
+	font-size: 4em
+}
+
+.logo-img {
+	margin-top: -20px;
+}
+
+#error_message {
+	color: #ff0000;
+}
+
+/** Image section */
+.preview_image {
+	max-width: 30%;
+	max-height: 30%;
+}
+
+.full_image {
+        margin-top: 20px;
+	max-width: 50%;
+	max-height: 50%;
+	position: center;
+}
+/** End of Image section */
+
+
+/** Navbar section */
+.navbar {
+	background-color:#eeeeee;
+}
+/** End of Navbar section */
+
+/** Footer section */
+.bs-docs-footer {
+	padding-top: 40px;
+	padding-bottom: 40px;
+	margin-top: 100px;
+	color: #777;
+	text-align: center;
+	border-top: 1px solid #e5e5e5
+}
+
+#footer {
+	background-color: #eeeeee;
+	clear: both;
+	position: relative;
+	z-index: 10;
+	height: 5em;
+	margin-top: 30px;
+}
