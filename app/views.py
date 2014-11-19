@@ -28,7 +28,7 @@ class Animu:
 #data [8] itu animation producer
 #data [9] itu VA
 # Fix the initialization
-  def __init__(self,Genre, Score, Director,VA,Link,Storyboard=None,Character_Design=None,Sound_Director=None,Producer=None,Animation_Producer=None):
+  def __init__(self,Title, Genre, Score, Director,VA,Link,Storyboard=None,Character_Design=None,Sound_Director=None,Producer=None,Animation_Producer=None):
     self.Title = Title
     self.Score = Score
     self.Genre = Genre
@@ -62,6 +62,11 @@ def index():
         if form.validate_on_submit():
             # search here
             search_result = []
+
+            # dummy data
+            return_object = Animu(Title = ['Gatchaman (TV)'], Genre = ['action', 'adventure', 'drama', 'science fiction'], Score = ['6.159'], Director = ['Dummy'],VA = ['Dummy'],Link = 'http://www.animenewsnetwork.com/encyclopedia/anime.php?id=4')
+            search_result.append(return_object)
+
             return render_template('index.html', form=form, result=search_result, search=True)
         else:
             flash('Error!', 'error')

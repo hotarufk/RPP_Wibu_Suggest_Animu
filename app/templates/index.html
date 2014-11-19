@@ -40,9 +40,20 @@
 
   <h2>-- Search Result(s) --</h2>
     {% if result|length != 0 %}
-     {% for result_entity in query %}
-       <!-- Result entity here -->
+     <ul>
+     {% for result_entity in result %}
+       <li>
+       <h3>Anime Title: <a href="{{result_entity.Link}}">{{result_entity.Title[0]}}</a></h3>
+       <h4>Anime Score: {{result_entity.Score[0]}}</h4>
+       <h4>Anime Genre: 
+           {% for genre_entity in result_entity.Genre %}
+              {{genre_entity}}; 
+           {% endfor %}
+       </h4>
+       </li>
      {% endfor %}
+     <br/><h4>{{result|length}} result(s) found.</h4>
+     </ul>
     {% else %}	
     <h3>Empty result!</h3> 
     {% endif %}
