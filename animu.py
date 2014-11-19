@@ -8,10 +8,14 @@ class Animu:
 #data [7] itu producer
 #data [8] itu animation producer
 #data [9] itu VA
-  def __init__(self,Genre, Score, Director,Storyboard=None,Character_Design=None,Sound_Director=None,Producer=None,Animation_Producer=None,VA,Link):
+  def __init__(self,Genre, Score, Director,VA,Link,Storyboard=None,Character_Design=None,Sound_Director=None,Producer=None,Animation_Producer=None,Count = None):
     self.Title = Title
     self.Score = Score
     self.Genre = Genre
     self.VA = VA
     self.Director = Director
     self.Link = Link
+    if Count = None :
+		self.Count = 0
+	else :
+		self.count = Count

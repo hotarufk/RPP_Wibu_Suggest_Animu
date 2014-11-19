@@ -17,6 +17,14 @@ import operator
 def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
 	#Kamus Kecil
 	keywords = []
+	if maxScore !=None :
+		mxS = maxScore
+	else:
+		mxS = 10
+	if minScore !=None :
+		mmS = minScore
+	else:
+		mmS = 0
 	ListGenre = ['action','romance','fantasy']
 	if LGenre != None:
 		ListGenre = LGenre
@@ -28,33 +36,50 @@ def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
 	#Algoritma
 	f = open('full.txt', 'r')
 	for x in range(0, 10):
+		count = 0
 		dataAnimu = f.readline() 
 		S = dataAnimu.split("]")
-		Genre  = S[1].replace("[","").replace("'","").split(", ") #genre yang ada
+		
+		#title
+		Title = S[0].replace("[","").replace("'","").split(", ")[1]
+		print Title
+		
 		#Genre
+		Genre  = S[1].replace("[","").replace("'","").split(", ") #genre yang ada
 		for g in ListGenre :
 			if any(g in gen for gen in Genre):
 				#print "found !", Genre
+				count += 5
 				if dataAnimu in Result: #data udah ada di list
 					print "sudah ada"
 				else :
 					Result.append(dataAnimu)
-					print "found"
+					print "found1"
 				break
 		
 		#score
-		
+		Score  = float(S[2].replace("[","").replace("'","").replace(", ","")) #genre yang ada
+		print Score
+		if (mmS < Score) and (Score < mxS):
+			#print "testses"
+			count += 3
+			if dataAnimu in Result: #data udah ada di list
+				print "sudah ada"
+			else :
+				Result.append(dataAnimu)
+				print "found2"
 		#KeyWords
 		for y in range(0,9) :
 			keywords.extend (S[y].replace("[","").replace("'","").split(", "))
 		for p in ListKeywords:
 			if any(p in pp for pp in keywords):
 				#print "found !", Genre
+				count += 2
 				if dataAnimu in Result: #data udah ada di list
 					print "sudah ada"
 				else :
 					Result.append(dataAnimu)
-					print "found"
+					print "found3"
 				break
 
 	return keywords
