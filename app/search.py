@@ -86,9 +86,10 @@ def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
 		currentAnimu = Animu (Title = title,Genre = genre , Score = score, Director = "dummy", VA = "Dummy",Link = URL,Count = count)
 		print "curANIMU",currentAnimu
 		Result.append(currentAnimu)
-	Result.sort(key=operator.attrgetter('Score'))
-	print "data :",len(Result)
-	return  Result
+	Result.sort(key=operator.attrgetter('Count'))
+	for x in Result :
+		print "count :",x.Count
+	return list(reversed(Result))
 #print VA
 
 f = open('full.txt', 'r')
