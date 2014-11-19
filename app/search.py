@@ -36,40 +36,33 @@ def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
 	
 	#Algoritma
 	f = open('full.txt', 'r')
-	for x in range(0, 10):
+	for x in range(0, 1000):
 		count = 0
 		dataAnimu = f.readline() 
 		S = dataAnimu.split("]")
+		
 		#title
 		title = S[0].replace("[","").replace("'","").split(", ")[1]
-		print title
+		#print title
+		
 		#url
 		URL = S[0].replace("[","").replace("'","").split(", ")[0]
-		print URL
+		#print URL
+		
 		#Genre
 		genre  = S[1].replace("[","").replace("'","").split(", ") #genre yang ada
 		for g in ListGenre :
 			if any(g in gen for gen in genre):
 				#print "found !", Genre
-				count += 5
-				if dataAnimu in Result: #data udah ada di list
-					print "sudah ada"
-				else :
-					#Result.append(dataAnimu)
-					print "found1"
-				break
+				count += 2
 		
 		#score
 		score  = float(S[2].replace("[","").replace("'","").replace(", ","")) #genre yang ada
-		print score
+		#print score
 		if (mmS < score) and (score < mxS):
 			#print "testses"
 			count += 3
-			if dataAnimu in Result: #data udah ada di list
-				print "sudah ada"
-			else :
-				#Result.append(dataAnimu)
-				print "found2"
+			
 		#KeyWords
 		for y in range(0,9) :
 			keywords.extend (S[y].replace("[","").replace("'","").split(", "))
@@ -77,19 +70,17 @@ def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
 			if any(p in pp for pp in keywords):
 				#print "found !", Genre
 				count += 2
-				if dataAnimu in Result: #data udah ada di list
-					print "sudah ada"
-				else :
-					#Result.append(dataAnimu)
-					print "found3"
-				break
+				
 		currentAnimu = Animu (Title = title,Genre = genre , Score = score, Director = "dummy", VA = "Dummy",Link = URL,Count = count)
-		print "curANIMU",currentAnimu
+		#print "curANIMU",currentAnimu
 		Result.append(currentAnimu)
+		
 	Result.sort(key=operator.attrgetter('Count'))
-	for x in Result :
+	Suggestion = list(reversed(Result))[0:10]
+	for x in Suggestion :
+		print x.Title,x.Score
 		print "count :",x.Count
-	return list(reversed(Result))
+	return Suggestion
 #print VA
 
 f = open('full.txt', 'r')
