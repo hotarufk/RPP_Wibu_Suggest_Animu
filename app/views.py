@@ -18,25 +18,6 @@ from wtforms.validators import Required
 app.config['SECRET_KEY'] = 'SECRETKEY' # dummy
 app.config['RECAPTCHA_PUBLIC_KEY'] = 'PUBLICKEY'
 
-class Animu:
-#data [1] itu genre
-#data [2] itu score
-#data [3] itu Director
-#data [4] itu Storyboard
-#data [5] itu character design
-#data [6] itu sound director
-#data [7] itu producer
-#data [8] itu animation producer
-#data [9] itu VA
-# Fix the initialization
-  def __init__(self,Title, Genre, Score, Director,VA,Link,Storyboard=None,Character_Design=None,Sound_Director=None,Producer=None,Animation_Producer=None):
-    self.Title = Title
-    self.Score = Score
-    self.Genre = Genre
-    self.VA = VA
-    self.Director = Director
-    self.Link = Link
-
 class SearchForm(Form):
   genre = SelectField(u'Genre', [validators.optional()])
   min_score = DecimalField(u'Minimum Score (0.00 - 10.00)', [validators.optional()])
