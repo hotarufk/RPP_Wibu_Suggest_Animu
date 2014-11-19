@@ -8,6 +8,7 @@
 """
 import operator
 from app import app
+from search import preprocess
 from flask import render_template, request, Response, redirect, flash
 from flask_wtf import Form, RecaptchaField
 from wtforms import StringField, HiddenField, ValidationError, DecimalField, SelectField, SubmitField, IntegerField, FormField, validators
@@ -62,10 +63,7 @@ def index():
         if form.validate_on_submit():
             # search here
             search_result = []
-
-            # dummy data
-            return_object = Animu(Title = ['Gatchaman (TV)'], Genre = ['action', 'adventure', 'drama', 'science fiction'], Score = ['6.159'], Director = ['Dummy'],VA = ['Dummy'],Link = 'http://www.animenewsnetwork.com/encyclopedia/anime.php?id=4')
-            search_result.append(return_object)
+            search_result = preprocess(maxScore=request.form.get('max_score'),minScore=request.form.get('min_score'),LGenre=request.form.get('genre'),LKeywords=request.form.get('additional_keyword'))
 
             return render_template('index.html', form=form, result=search_result, search=True)
         else:

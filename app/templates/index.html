@@ -43,8 +43,8 @@
      <ul>
      {% for result_entity in result %}
        <li>
-       <h3>Anime Title: <a href="{{result_entity.Link}}">{{result_entity.Title[0]}}</a></h3>
-       <h4>Anime Score: {{result_entity.Score[0]}}</h4>
+       <h3>Anime Title: <a href="{{result_entity.Link}}">{{result_entity.Title}}</a></h3>
+       <h4>Anime Score: {{result_entity.Score}}</h4>
        <h4>Anime Genre: 
            {% for genre_entity in result_entity.Genre %}
               {{genre_entity}}; 
