@@ -17,19 +17,25 @@ from animu import Animu
 
 def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
 	#Kamus Kecil
-	keywords = []
-	if maxScore !=None :
+	if minScore == '':
+		minScore = -1
+	if maxScore == '':
+		maxScore = -1
+	minScore = float(minScore)
+	maxScore = float(maxScore)
+
+	if maxScore >= 0 and maxScore <= 10 :
 		mxS = maxScore
 	else:
 		mxS = 10
-	if minScore !=None :
+	if minScore >= 0 and minScore <= 10:
 		mmS = minScore
 	else:
 		mmS = 0
-	ListGenre = ['action','romance','fantasy']
+	ListGenre = 'action' # dummy
 	if LGenre != None:
 		ListGenre = LGenre
-	ListKeywords=['Kana Hanazawa']
+	ListKeywords='Kana Hanazawa' # dummy
 	if LKeywords != None :
 		ListKeywords = LKeywords
 	Result=[]
@@ -38,6 +44,7 @@ def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
 	f = open('full.txt', 'r')
 	for x in range(0, 1000):
 		count = 0
+		keywords = []
 		dataAnimu = f.readline() 
 		S = dataAnimu.split("]")
 		
@@ -51,14 +58,12 @@ def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
 		
 		#Genre
 		genre  = S[1].replace("[","").replace("'","").split(", ") #genre yang ada
-		for g in ListGenre :
-			if any(g in gen for gen in genre):
-				#print "found !", Genre
-				count += 2
+		if any(ListGenre in gen for gen in genre):
+			#print "found !", Genre
+			count += 2
 		
 		#score
 		score  = float(S[2].replace("[","").replace("'","").replace(", ","")) #genre yang ada
-		#print score
 		if (mmS < score) and (score < mxS):
 			#print "testses"
 			count += 3
@@ -66,10 +71,9 @@ def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
 		#KeyWords
 		for y in range(0,9) :
 			keywords.extend (S[y].replace("[","").replace("'","").split(", "))
-		for p in ListKeywords:
-			if any(p in pp for pp in keywords):
-				#print "found !", Genre
-				count += 2
+		if any(ListKeywords in pp for pp in keywords):
+			#print "found !", Genre
+			count += 2
 				
 		currentAnimu = Animu (Title = title,Genre = genre , Score = score, Director = "dummy", VA = "Dummy",Link = URL,Count = count)
 		#print "curANIMU",currentAnimu
@@ -83,9 +87,9 @@ def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
 	return Suggestion
 #print VA
 
-f = open('full.txt', 'r')
+# f = open('full.txt', 'r')
 #Arrf = []
 
 #while True :
 	#action = raw_input('Command :')
-preprocess()
+# preprocess()
