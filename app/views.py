@@ -6,6 +6,7 @@
   Views for RPP Project
 
 """
+import ast
 import operator
 from app import app
 from search import preprocess, preprocess_zero
@@ -17,6 +18,14 @@ from wtforms.validators import Required
 # These should be configured through Flask-Appconfig
 app.config['SECRET_KEY'] = 'SECRETKEY' # dummy
 app.config['RECAPTCHA_PUBLIC_KEY'] = 'PUBLICKEY'
+
+# Database
+data = []
+f = open('full.txt', 'r')
+for x in range(0, 1000):
+	dataAnimu = f.readline() 
+	dataAnimu = ast.literal_eval(dataAnimu)
+	data.append(dataAnimu)
 
 class SearchForm(Form):
   anime_title = StringField(u'Animation Title', [validators.optional()])
@@ -37,7 +46,7 @@ def index():
         if form.validate_on_submit():
             # search here
             search_result = []
-            search_result = preprocess_zero(animeTitle=request.form.get('anime_title'))
+            search_result = preprocess_zero(data=data, animeTitle=request.form.get('anime_title'))
 
             return render_template('index.html', form=form, result=search_result, search=True)
         else:

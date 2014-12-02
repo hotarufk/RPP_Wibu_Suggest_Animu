@@ -13,29 +13,21 @@ from animu import Animu
 #data [9] itu VA
 
 
-def preprocess_zero(animeTitle=None):
+def preprocess_zero(data, animeTitle=None):
 	if animeTitle == None:
 		return []
 	else:
-		return preprocess(10.0, 0.0, ['action', 'science fiction'], []);
+		for data_entity in data:
+			if data_entity[1][0] == animeTitle:
+				keyword_list = []
+				for y in range(1,9):
+					keyword_list.extend(data_entity[y])
+				return preprocess(data, data_entity[1][0], data_entity[2], keyword_list)
+			else:
+				return []
 
-def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
+def preprocess(data, currentTitle,LGenre=None,LKeywords=None):
 	#Kamus Kecil
-	if minScore == '':
-		minScore = -1
-	if maxScore == '':
-		maxScore = -1
-	minScore = float(minScore)
-	maxScore = float(maxScore)
-
-	if maxScore >= 0 and maxScore <= 10 :
-		mxS = maxScore
-	else:
-		mxS = 10
-	if minScore >= 0 and minScore <= 10:
-		mmS = minScore
-	else:
-		mmS = 0
 	ListGenre = ['action'] # dummy
 	if LGenre != None:
 		ListGenre = LGenre
@@ -43,51 +35,36 @@ def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
 	if LKeywords != None :
 		ListKeywords = LKeywords
 	Result=[]
-	
-	#Algoritma
-	f = open('full.txt', 'r')
+
 	for x in range(0, 1000):
+
 		count = 0
-		keywords = []
-		dataAnimu = f.readline() 
-		S = dataAnimu.split("]")
-		
-		#title
-		title = S[0].replace("[","").replace("'","").split(", ")[1]
-		#print title
-		
-		#url
-		URL = S[0].replace("[","").replace("'","").split(", ")[0]
-		#print URL
-		
-		#Genre
-		genre  = S[1].replace("[","").replace("'","").split(", ") #genre yang ada
+		URL = data[x][0]
+		title = data[x][1][0]
+		genre = data[x][2]
+		score = float(data[x][3][0])
+
 		for ListGenreEntity in ListGenre:
 			if any(ListGenreEntity in gen for gen in genre):
-				#print "found !", Genre
-				count += 2
-		
-		#score
-		score  = float(S[2].replace("[","").replace("'","").replace(", ","")) #genre yang ada
-		if (mmS < score) and (score < mxS):
-			#print "testses"
-			count += 3
-			
-		#KeyWords
-		for y in range(0,9) :
-			keywords.extend (S[y].replace("[","").replace("'","").split(", "))
+				count += 2	
+
+		keywords = []
+		for y in range(1,9):
+			keywords.extend(data[y])
+
 		for ListKeywordsEntity in ListKeywords:
 			if any(ListKeywordsEntity in pp for pp in keywords):
-				#print "found !", Genre
 				count += 2
 				
 		currentAnimu = Animu (Title = title,Genre = genre , Score = score, Director = "dummy", VA = "Dummy",Link = URL,Count = count)
-		#print "curANIMU",currentAnimu
-		Result.append(currentAnimu)
+
+		if (title != currentTitle):
+			Result.append(currentAnimu)	
 		
 	Result.sort(key=operator.attrgetter('Count'))
 	Suggestion = list(reversed(Result))[0:10]
-	for x in Suggestion :
-		print x.Title,x.Score
-		print "count :",x.Count
+
+	# for x in Suggestion :
+	# 	print x.Title,x.Score
+	# 	print "count :",x.Count
 	return Suggestion
