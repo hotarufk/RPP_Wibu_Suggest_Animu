@@ -23,8 +23,7 @@ def preprocess_zero(data, animeTitle=None):
 				for y in range(1,9):
 					keyword_list.extend(data_entity[y])
 				return preprocess(data, data_entity[1][0], data_entity[2], keyword_list)
-			else:
-				return []
+	return []
 
 def preprocess(data, currentTitle,LGenre=None,LKeywords=None):
 	#Kamus Kecil
