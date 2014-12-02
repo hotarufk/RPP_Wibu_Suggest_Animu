@@ -8,7 +8,7 @@
 """
 import operator
 from app import app
-from search import preprocess
+from search import preprocess, preprocess_zero
 from flask import render_template, request, Response, redirect, flash
 from flask_wtf import Form, RecaptchaField
 from wtforms import StringField, HiddenField, ValidationError, DecimalField, SelectField, SubmitField, IntegerField, FormField, validators
@@ -19,10 +19,7 @@ app.config['SECRET_KEY'] = 'SECRETKEY' # dummy
 app.config['RECAPTCHA_PUBLIC_KEY'] = 'PUBLICKEY'
 
 class SearchForm(Form):
-  genre = SelectField(u'Genre', [validators.optional()])
-  min_score = DecimalField(u'Minimum Score (0.00 - 10.00)', [validators.optional()])
-  max_score = DecimalField(u'Maximum Score (0.00 - 10.00)', [validators.optional()])
-  additional_keyword = StringField(u'Additional Keyword', [validators.optional()])
+  anime_title = StringField(u'Animation Title', [validators.optional()])
   submit_button = SubmitField('Search')
 
   def validate_hidden_field(form, field):
@@ -32,19 +29,15 @@ class SearchForm(Form):
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     form = SearchForm()
-    # dynamically retrieve Genre from object databases in here if possible
-    form.genre.choices = [('action', 'action'), ('adventure', 'adventure'), ('comedy', 'comedy'), ('drama', 'drama'), ('romance', 'romance'), ('science fiction', 'science fiction'), ('slice of life', 'slice of life')]
+    # dynamically retrieve Anime title from object databases in here if possible
     if request.method == 'GET':
         return render_template('index.html', form=form, search=False)
     else:
-        form.genre.data = request.form.get('genre')
-        form.min_score.data = request.form.get('min_score')
-        form.max_score.data = request.form.get('max_score')
-        form.additional_keyword.data = request.form.get('additional_keyword')
+        form.anime_title.data = request.form.get('anime_title')
         if form.validate_on_submit():
             # search here
             search_result = []
-            search_result = preprocess(maxScore=request.form.get('max_score'),minScore=request.form.get('min_score'),LGenre=request.form.get('genre'),LKeywords=request.form.get('additional_keyword'))
+            search_result = preprocess_zero(animeTitle=request.form.get('anime_title'))
 
             return render_template('index.html', form=form, result=search_result, search=True)
         else:

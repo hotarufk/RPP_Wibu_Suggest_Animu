@@ -13,7 +13,11 @@ from animu import Animu
 #data [9] itu VA
 
 
-
+def preprocess_zero(animeTitle=None):
+	if animeTitle == None:
+		return []
+	else:
+		return preprocess(10.0, 0.0, ['action', 'science fiction'], []);
 
 def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
 	#Kamus Kecil
@@ -32,10 +36,10 @@ def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
 		mmS = minScore
 	else:
 		mmS = 0
-	ListGenre = 'action' # dummy
+	ListGenre = ['action'] # dummy
 	if LGenre != None:
 		ListGenre = LGenre
-	ListKeywords='Kana Hanazawa' # dummy
+	ListKeywords=['Kana Hanazawa'] # dummy
 	if LKeywords != None :
 		ListKeywords = LKeywords
 	Result=[]
@@ -58,9 +62,10 @@ def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
 		
 		#Genre
 		genre  = S[1].replace("[","").replace("'","").split(", ") #genre yang ada
-		if any(ListGenre in gen for gen in genre):
-			#print "found !", Genre
-			count += 2
+		for ListGenreEntity in ListGenre:
+			if any(ListGenreEntity in gen for gen in genre):
+				#print "found !", Genre
+				count += 2
 		
 		#score
 		score  = float(S[2].replace("[","").replace("'","").replace(", ","")) #genre yang ada
@@ -71,9 +76,10 @@ def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
 		#KeyWords
 		for y in range(0,9) :
 			keywords.extend (S[y].replace("[","").replace("'","").split(", "))
-		if any(ListKeywords in pp for pp in keywords):
-			#print "found !", Genre
-			count += 2
+		for ListKeywordsEntity in ListKeywords:
+			if any(ListKeywordsEntity in pp for pp in keywords):
+				#print "found !", Genre
+				count += 2
 				
 		currentAnimu = Animu (Title = title,Genre = genre , Score = score, Director = "dummy", VA = "Dummy",Link = URL,Count = count)
 		#print "curANIMU",currentAnimu
@@ -85,11 +91,3 @@ def preprocess(maxScore=None,minScore=None,LGenre=None,LKeywords=None):
 		print x.Title,x.Score
 		print "count :",x.Count
 	return Suggestion
-#print VA
-
-# f = open('full.txt', 'r')
-#Arrf = []
-
-#while True :
-	#action = raw_input('Command :')
-# preprocess()
