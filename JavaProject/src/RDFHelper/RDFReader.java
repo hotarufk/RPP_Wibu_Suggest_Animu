@@ -14,7 +14,7 @@ public class RDFReader {
 	public static OntModel readRDF() {
 		// create an empty model
 		OntModel model = ModelFactory
-				.createOntologyModel(OntModelSpec.RDFS_MEM);
+				.createOntologyModel(OntModelSpec.OWL_DL_MEM);
 
 		// use the FileManager to find the input file
 		InputStream in = FileManager.get().open(Constants.ONTOLOGY_FILE);
@@ -26,7 +26,7 @@ public class RDFReader {
 		model.read(in, null);
 
 		// write it to standard out
-		model.write(System.out);
+		// model.write(System.out);
 
 		return model;
 	}

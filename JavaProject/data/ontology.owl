@@ -1,0 +1,40 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://www.semanticweb.org/lenovo/ontologies/2014/12/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Movie">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Anime"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Anime">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+        <owl:onProperty>
+          <rdf:Property rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/hasGenre"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/action">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Ova">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Anime"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Tv">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Anime"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/adventure"/>
+  <j.0:Tv rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Gatchaman_(TV)">
+    <j.0:hasGenre rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/adventure"/>
+    <j.0:hasGenre rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/action"/>
+  </j.0:Tv>
+  <j.0:Ova rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Guyver_(TV)">
+    <j.0:hasGenre rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/adventure"/>
+  </j.0:Ova>
+</rdf:RDF>
