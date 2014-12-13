@@ -30,11 +30,14 @@
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Anime"/>
   </owl:Class>
   <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/adventure"/>
+  <rdf:Property rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/hasName"/>
   <j.0:Tv rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Gatchaman_(TV)">
     <j.0:hasGenre rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/adventure"/>
     <j.0:hasGenre rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/action"/>
+    <j.0:hasName>Gatchaman_(TV)</j.0:hasName>
   </j.0:Tv>
-  <j.0:Ova rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Guyver_(TV)">
+  <j.0:Tv rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Guyver_(TV)">
     <j.0:hasGenre rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/adventure"/>
-  </j.0:Ova>
+    <j.0:hasName>Guyver_(TV)</j.0:hasName>
+  </j.0:Tv>
 </rdf:RDF>

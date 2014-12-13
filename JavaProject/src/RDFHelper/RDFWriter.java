@@ -38,6 +38,7 @@ public class RDFWriter {
 		final OntClass adventure = model.createClass(NS + "adventure");
 		
 		final OntProperty hasGenre = model.createOntProperty(NS + "hasGenre");
+		final OntProperty hasName = model.createOntProperty(NS + "hasName");
 		
 		anime.addSuperClass(model.createSomeValuesFromRestriction(null, hasGenre, genre));
 
@@ -50,8 +51,8 @@ public class RDFWriter {
 		
 
 		// Add Individual
-		tv.createIndividual(NS + "Gatchaman_(TV)").addProperty(hasGenre, action).addProperty(hasGenre, adventure);
-		ova.createIndividual(NS + "Guyver_(TV)").addProperty(hasGenre, adventure);
+		tv.createIndividual(NS + "Gatchaman_(TV)").addProperty(hasName, "Gatchaman_(TV)").addProperty(hasGenre, action).addProperty(hasGenre, adventure);
+		tv.createIndividual(NS + "Guyver_(TV)").addProperty(hasName, "Guyver_(TV)").addProperty(hasGenre, adventure);
 		return model;
 	}
 
