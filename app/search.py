@@ -60,7 +60,7 @@ def preprocess(data, currentTitle,LGenre=None,LKeywords=None):
 		if (title != currentTitle):
 			Result.append(currentAnimu)	
 		
-	Result.sort(key=operator.attrgetter('Count'))
+	Result.sort(key=operator.attrgetter('Score'))
 	Suggestion = list(reversed(Result))[0:10]
 
 	# for x in Suggestion :
