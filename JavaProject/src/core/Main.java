@@ -39,8 +39,13 @@ public class Main {
 				+ "?anime_result_entity <http://www.semanticweb.org/lenovo/ontologies/2014/12/hasGenre> ?related_genre .";
 		
 		// Find whether TV / OVA / Movie in Title
-		queryString = queryString + "?anime_result_entity a <http://www.semanticweb.org/lenovo/ontologies/2014/12/Tv> .";
-		
+		if (anime_title.toLowerCase().contains("(tv")) {
+			queryString = queryString + "?anime_result_entity a <http://www.semanticweb.org/lenovo/ontologies/2014/12/Tv> .";
+		} else if (anime_title.toLowerCase().contains("(movie")) {
+			queryString = queryString + "?anime_result_entity a <http://www.semanticweb.org/lenovo/ontologies/2014/12/Movie> .";
+		} else if (anime_title.toLowerCase().contains("(ova")) {
+			queryString = queryString + "?anime_result_entity a <http://www.semanticweb.org/lenovo/ontologies/2014/12/Ova> .";
+		}
 		// Retrieve Anime name
 		queryString = queryString + "?anime_result_entity <http://www.semanticweb.org/lenovo/ontologies/2014/12/hasName> ?anime_result_name ";
 		
