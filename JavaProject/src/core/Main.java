@@ -1,6 +1,7 @@
 package core;
 
 import helper.Constants;
+import helper.QueryHelper;
 import RDFHelper.RDFReader;
 
 import com.hp.hpl.jena.ontology.OntModel;
@@ -19,7 +20,7 @@ public class Main {
 		
 		String anime_title = "";
 		
-		if (args.length != 1) {
+		if (args.length < 1) {
 			if (Constants.VERSION == Constants.DEBUG) {
 				anime_title = "Guyver_(TV)";	
 			} else {
@@ -30,27 +31,7 @@ public class Main {
 		final OntModel ontModel = RDFReader.readRDF();
 
 		/** SPARQL Query for inferencing anime genre to its category and retrieving all animes from all inferenced categories */
-		// Mapping a title to its genre -> get all category -> retrieve all genres in all categories
-		String queryString = "SELECT DISTINCT ?anime_result_name WHERE {"
-				+ "?anime_entity <http://www.semanticweb.org/lenovo/ontologies/2014/12/hasName>  \""+ anime_title +"\" ."
-				+ "?anime_entity <http://www.semanticweb.org/lenovo/ontologies/2014/12/hasGenre> ?genre ."
-				+ "?category <http://www.semanticweb.org/lenovo/ontologies/2014/12/hasMember> ?genre ."
-				+ "?category <http://www.semanticweb.org/lenovo/ontologies/2014/12/hasMember> ?related_genre ."
-				+ "?anime_result_entity <http://www.semanticweb.org/lenovo/ontologies/2014/12/hasGenre> ?related_genre .";
-		
-		// Find whether TV / OVA / Movie in Title
-		if (anime_title.toLowerCase().contains("(tv")) {
-			queryString = queryString + "?anime_result_entity a <http://www.semanticweb.org/lenovo/ontologies/2014/12/Tv> .";
-		} else if (anime_title.toLowerCase().contains("(movie")) {
-			queryString = queryString + "?anime_result_entity a <http://www.semanticweb.org/lenovo/ontologies/2014/12/Movie> .";
-		} else if (anime_title.toLowerCase().contains("(ova")) {
-			queryString = queryString + "?anime_result_entity a <http://www.semanticweb.org/lenovo/ontologies/2014/12/Ova> .";
-		}
-		// Retrieve Anime name
-		queryString = queryString + "?anime_result_entity <http://www.semanticweb.org/lenovo/ontologies/2014/12/hasName> ?anime_result_name ";
-		
-		// Subtract original title from result set
-		queryString = queryString + "MINUS { ?anime_result_entity <http://www.semanticweb.org/lenovo/ontologies/2014/12/hasName>  \""+ anime_title +"\" }}";
+		String queryString = QueryHelper.composeQuery(anime_title, args);
 		
 		Query query = QueryFactory.create(queryString);
 

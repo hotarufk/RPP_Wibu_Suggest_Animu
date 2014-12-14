@@ -124,8 +124,9 @@ public class RDFWriter {
 		categoryF.addProperty(hasMember, fantasy);
 
 		// Add Individuals here
-		tv.createIndividual(NS + "Gatchaman_(TV)").addProperty(hasName, "Gatchaman_(TV)").addProperty(hasGenre, action);
+		tv.createIndividual(NS + "Gatchaman_(TV)").addProperty(hasName, "Gatchaman_(TV)").addProperty(hasGenre, horror);
 		tv.createIndividual(NS + "Guyver_(TV)").addProperty(hasName, "Guyver_(TV)").addProperty(hasGenre, adventure);
+		tv.createIndividual(NS + "Boogiepop_Phantom_(TV)").addProperty(hasName, "Boogiepop_Phantom_(TV)").addProperty(hasGenre, adventure);
 		return model;
 	}
 
