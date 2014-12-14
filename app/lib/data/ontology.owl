@@ -1,0 +1,165 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://www.semanticweb.org/lenovo/ontologies/2014/12/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Movie">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Anime"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/magic">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/comedy">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/psychological">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/categoryA">
+    <j.0:hasMember>
+      <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/tournament"/>
+    </j.0:hasMember>
+    <j.0:hasMember>
+      <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/adventure"/>
+    </j.0:hasMember>
+    <j.0:hasMember>
+      <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/action"/>
+    </j.0:hasMember>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/category"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/thriller">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/categoryC">
+    <j.0:hasMember>
+      <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/slice_of_life"/>
+    </j.0:hasMember>
+    <j.0:hasMember>
+      <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/drama"/>
+    </j.0:hasMember>
+    <j.0:hasMember>
+      <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/romance"/>
+    </j.0:hasMember>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/category"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/categoryE">
+    <j.0:hasMember>
+      <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/erotica"/>
+    </j.0:hasMember>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/category"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Ova">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Anime"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/supernatural">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/name"/>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/erotica">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/slice_of_life">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/action">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/romance">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/tournament">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/mystery">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/adventure">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/category">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+        <owl:onProperty>
+          <rdf:Property rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/hasMember"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/fantasy">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Anime">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/name"/>
+        <owl:onProperty>
+          <rdf:Property rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/hasName"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+        <owl:onProperty>
+          <rdf:Property rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/hasGenre"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/categoryB">
+    <j.0:hasMember rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/mystery"/>
+    <j.0:hasMember rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/psychological"/>
+    <j.0:hasMember>
+      <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/horror"/>
+    </j.0:hasMember>
+    <j.0:hasMember rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/thriller"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/category"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/categoryD">
+    <j.0:hasMember rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/comedy"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/category"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/horror">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/categoryF">
+    <j.0:hasMember rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/fantasy"/>
+    <j.0:hasMember rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/supernatural"/>
+    <j.0:hasMember>
+      <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/science_fiction"/>
+    </j.0:hasMember>
+    <j.0:hasMember rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/magic"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/category"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/drama">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/science_fiction">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Genre"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Tv">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/Anime"/>
+  </owl:Class>
+  <j.0:Tv rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Gatchaman_(TV)">
+    <j.0:hasGenre rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/action"/>
+    <j.0:hasName>Gatchaman_(TV)</j.0:hasName>
+  </j.0:Tv>
+  <j.0:Tv rdf:about="http://www.semanticweb.org/lenovo/ontologies/2014/12/Guyver_(TV)">
+    <j.0:hasGenre rdf:resource="http://www.semanticweb.org/lenovo/ontologies/2014/12/adventure"/>
+    <j.0:hasName>Guyver_(TV)</j.0:hasName>
+  </j.0:Tv>
+</rdf:RDF>
